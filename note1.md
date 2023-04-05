@@ -52,6 +52,87 @@ Overriding: Two methods with the same method name and parameters.
 * Overriding allows the child class to provide different implementation for a method that exists in the parent class
 * Overriding can also be done with built-in magic-methods or base-functions
 ## Polymorphism
+A method that can be used throughout different classes and objects that is dependant on parameters. 
+* Different Classes (non-inherited) can have methods with the same names. 
+* A set of inherited classes can also have the same methods.
+```python
+class Bear:
+    def sound(self):
+        print("Groarrr")
+ 
+class Dog:
+    def sound(self):
+        print("Woof woof!")
+ 
+def makeSound(animalType):
+    animalType.sound()
+bearObj = Bear()
+dogObj = Dog()
+ 
+makeSound(bearObj)
+makeSound(dogObj)
+```
+This is an example of two different classses with the same method name. The sound() method exists in both class Dog and Bear.
+Polymorphism and Inheritance
+**Polymorphism and Inheritance**
+* Overloading is a form of polymorphism, but is illegal in python 3. 
+* Intead you can do overriding, which is inherited classes modifying inherited methods. 
+Example of Overloading (Illegal):
+```python
+class Person:
+    def __init__(self, name, age):
+        self.__name = name
+        self.__age = age
+
+    def show(self):
+        return self.__name
+
+    def show(self, num):
+        return "%s %d" % (self.__name, self.__age)
+```
+It is illegal since it contains two methods of the same name (show) within the same class.
+**Base Overrides**
+* A child of a parent have an overrided method where the child utilizes the method differently.
+* It's also possible to override built in methods that we use in Python. (magic methods)
+Example:
+```python
+class Dog:
+	def __init__(self,name):
+		self.__name = name
+	
+	def __str__(self):
+		return “Woof, I’m %s.” % self.__name
+
+corgi = Dog(“Tobasco”)
+print(corgi) → “Woof, I’m Tobasco.”
+```
+Overriding can allow you to manipulate how a object behaves with built in functions. For example...
+* Perform mathamtical operations on custom objects
+* Compare equality between two custom objects
+**__repr__ base function**
+* In order to make custom objects printable, the __str__ and __repr__ method need to be overrided
+* __repr__ allows us to present a printable version of the object
+* __str__ converts the object into a string
+
+## Inheritance 
+When an object or class is based on another class.
+* The child class will inherit its features from a parent class. 
+* A child class will recieve all the attributes and methods of the parent class. 
+* A child can then add new attributes and new methods.
+* A child class can also override attributes and methods 
+* A child class does not need to a new __init__ method unless it requires new attributes
+**Types of Inheritance**
+* Single Inheritance: When a child class ingerits the features of one parent class. 
+* Multiple Inheritance: When a child class inherits features from multiple parent classes. 
+* Multilevel Inheritance: When a child class inherits from another class which inherited from another class...
+**super() method**
+* a built-in method for classes to refer to their parent class
+* Helps us avoid doing ParentClass.method(self) to avoid confusion
+Note: In nearly all circumstances you should avoid using inheritance. This is because modifying 1 parent class can break all the child classes, making code less maintainable. 
+## Iterable Objects
+* Objects you can iterate through like a sequence
+* The portion of the iterable object must be a sequence
+* Even if a object is iterbale it may not be indexable
 
 
 

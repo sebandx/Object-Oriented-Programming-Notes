@@ -1,33 +1,42 @@
-# Object Oriented Programming Note #1
+# Object Oriented Programming
 ---
 ## What is an Object?
-* In OOP, and object is a combination of data and functional code
-* Like real-world objects, objects in OOP have states and behavior
+* An object is a combination of data and functional code
+* Objects have states and behavior
 ## Object Oriented Programming
-* For creating modular, reusable software. 
-* Designs programs through creating Objects which you can provide functionality to
-* Focuses on the definition of data
+* For creating modular, reusable software through focusing on the definition of data.
+* Designs programs through creating objects which you can provide functionality to
 Object's Data -> attributes
 Object's Code -> methods
 ## Classes and Objects
 Class -> A class is a template for creating objects. It is a user-defined data type that contains data (attributes) and methods that operate on that data.
 * Attributes are objects accessible tools. 
-* Fields are variables which belong to an object or class
-    * Type 1: belongs to an instance of a class
-    * Type 2: belongs to the class itself
+* Fields are variables which belong to an object or class. It can either belong to...
+    * An instance of a class
+    * The class itself
 * Methods are functions that the object can call
-Note: Class names are capitalized 
-## __init__ method and self parameter
+Note: Class names are always capitalized 
+## ```__init__``` method and self parameter
 * Executed as soon as an object of the class is initiated
-* Allows us to initialize an objects attributes
-* self denotes that the method is accessible for the object itself
-* self attributes are treated as local
+* Allows us to initialize an object's attributes
+* self means that the method is accessible for the object itself
+* self attributes are local to the instance of the class
+
+Example:
+```python
+class Rectangle:
+    def __init__(self, width, height): # Intializes attributes of the rectangle class: width and height
+        self.width = width
+        self.height = height
+    def area(self):
+        return self.width * self.height
+```
 
 ## Encapsulation
 * Restricting access to certain attributes of the class/object.
-* In Python, attributes are hidden by using a __ (double underscore), as prefix.
+* In Python, attributes are hidden by using double underscores as prefixes.
 
-**Setter and Getter Methods (Accessing Encapsulated Attributes)**
+### Setter and Getter Methods (Accessing Encapsulated Attributes)
 ```python
 class Student:
   def __init__(self,nameF, nameL, num):
@@ -42,8 +51,8 @@ class Student:
     return self.__firstName
 ```
 Explanation: 
-* Even though __firstName is encapsulated, getFirstName is not encapsulated.
-* Since getFirstName is inside the Student class, getFirstName can retrieve and “pass on” the student name to somewhere outside the class
+* Even though firstName is encapsulated, getFirstName is not encapsulated.
+* Since getFirstName is inside the Student class, getFirstName can retrieve and return the student name to somewhere outside the class
 ## Overrides
 Overloading: Two methods in the same class that have the name, but different parameters. (Overloading is not possible in Python 3)
 Overriding: Two methods with the same method name and parameters.
@@ -72,12 +81,11 @@ dogObj = Dog()
 makeSound(bearObj)
 makeSound(dogObj)
 ```
-This is an example of two different classes with the same method name. The sound() method exists in both class Dog and Bear.
-Polymorphism and Inheritance
-**Polymorphism and Inheritance**
-* Overloading is a form of polymorphism, but is illegal in python 3. 
-* Instead you can do overriding, which is inherited classes modifying inherited methods. 
-Example of Overloading (Illegal):
+This is an example polymorphism (the sound method exists in both the Bear and Dog class).
+### Polymorphism and Inheritance
+* Overloading is an example of polymorphism, however it's illegal in python 3. Overloading is when a class or function to have multiple implementations of the same method.
+* Overriding is another example of polymorphism and is legal. It is when inherited classes modify inherited methods from the parent class. 
+Example of Overloading:
 ```python
 class Person:
     def __init__(self, name, age):
@@ -90,10 +98,9 @@ class Person:
     def show(self, num):
         return "%s %d" % (self.__name, self.__age)
 ```
-It is illegal since it contains two methods of the same name (show) within the same class.
-**Base Overrides**
-* A child of a parent has an overridden method where the child utilizes the method differently.
-* It's also possible to override built in methods that we use in Python. (magic methods)
+### Base Overrides
+* Overriding methods in a child class that were inherited from a parent class.
+* It's also possible to override built in methods that we use in Python. 
 Example:
 ```python
 class Dog:
@@ -106,13 +113,13 @@ class Dog:
 corgi = Dog(“Tobasco”)
 print(corgi) → “Woof, I’m Tobasco.”
 ```
-Overriding can allow you to manipulate how an object behaves with built in functions. For example...
+Overriding can allow you to manipulate how an object behaves with built in functions. For example it can allow you to...
 * Perform mathematical operations on custom objects
 * Compare equality between two custom objects
-**__repr__ base function**
-* In order to make custom objects printable, the __str__ and __repr__ method need to be overridden
-* __repr__ allows us to present a printable version of the object
-* __str__ converts the object into a string
+**repr base function**
+* In order to make custom objects printable, the ``` __str__``` and ```__repr__``` method need to be overridden
+	* ```__repr__``` allows us to present a printable version of the object
+	* ```__str__``` converts the object into a string
 
 ## Inheritance 
 When an object or class is based on another class.
@@ -120,19 +127,21 @@ When an object or class is based on another class.
 * A child class will receive all the attributes and methods of the parent class. 
 * A child can then add new attributes and new methods.
 * A child class can also override attributes and methods 
-* A child class does not need to a new __init__ method unless it requires new attributes
-**Types of Inheritance**
+* A child class does not need to a new ```__init__``` method unless it requires new attributes
+### Types of Inheritance
 * Single Inheritance: When a child class inherits the features of one parent class. 
 * Multiple Inheritance: When a child class inherits features from multiple parent classes. 
 * Multilevel Inheritance: When a child class inherits from another class which inherited from another class...
-**super() method**
+### super() method
 * a built-in method for classes to refer to their parent class
 * Helps us avoid doing ParentClass.method(self) to avoid confusion
-Note: In nearly all circumstances you should avoid using inheritance. This is because modifying 1 parent class can break all the child classes, making code less maintainable. 
+Note: In general inheritance should be avoided. This is because modifying a parent class could easily break the child classes, making less convinient to modify your code. 
 ## Iterable Objects
 * Objects you can iterate through like a sequence
 * The portion of the iterable object must be a sequence
 * Even if a object is iterable it may not be indexable
+
+
 
 
 
